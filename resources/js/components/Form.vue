@@ -1,7 +1,7 @@
 <template>
-    <div class="container" @submit.prevent="send">
+    <div class="container" >
         <p class="col-sm-12 col-md-12 mb-4">さぁ、最新のニュースをシェアしましょう</p>
-            <form action="">
+            <form action="" @submit.prevent="send">
                 <div class="form-group d-flex">
                     <label for="title" class="col-sm-12 col-md-2 col-lg-2">タイトル</label>
                     <input type="text" name="title" class="col-sm-12 col-md-9 col-lg-6 form-control ml-2 mr-2" id="title" v-model="title">
@@ -23,7 +23,6 @@
 <script>
 
     export default {
-
         data() {
             return {
                 //他のデータ略
@@ -34,7 +33,6 @@
         },
 
         methods: {
-
             send() {
                 axios.post('/article/',{
                     title: this.title,

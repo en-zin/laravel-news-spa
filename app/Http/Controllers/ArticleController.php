@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         //
-        return $request;
+        return Article::all();
     }
 
     /**

@@ -1973,7 +1973,12 @@ __webpack_require__.r(__webpack_exports__);
       title: ""
     };
   },
-  mounted: function mounted() {// axios.get('/article').then(response => this.articles = response.data)
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/article').then(function (response) {
+      return _this.articles = response.data;
+    });
   }
 });
 
@@ -2016,14 +2021,14 @@ __webpack_require__.r(__webpack_exports__);
       //他のデータ略
       article: {},
       title: "",
-      content: "",
-      params: new URLSearchParams()
+      content: ""
     };
   },
   methods: {
     send: function send() {
-      params.append(title, contents), axios.post('/article/', {
-        params: params
+      axios.post('/article/', {
+        title: this.title,
+        content: this.content
       }).then(function (response) {
         console.log(response);
       });
@@ -37691,23 +37696,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container",
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.send($event)
+  return _c("div", { staticClass: "container" }, [
+    _c("p", { staticClass: "col-sm-12 col-md-12 mb-4" }, [
+      _vm._v("さぁ、最新のニュースをシェアしましょう")
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        attrs: { action: "" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.send($event)
+          }
         }
-      }
-    },
-    [
-      _c("p", { staticClass: "col-sm-12 col-md-12 mb-4" }, [
-        _vm._v("さぁ、最新のニュースをシェアしましょう")
-      ]),
-      _vm._v(" "),
-      _c("form", { attrs: { action: "" } }, [
+      },
+      [
         _c("div", { staticClass: "form-group d-flex" }, [
           _c(
             "label",
@@ -37781,9 +37786,9 @@ var render = function() {
           { staticClass: "btn btn-primary", attrs: { type: "submit" } },
           [_vm._v("送信")]
         )
-      ])
-    ]
-  )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
