@@ -1,3 +1,6 @@
+import HeaderComponent from "./components/HeaderComponent";
+import ContentsComponent from "./components/ContentsComponent";
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,11 +23,11 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-import HeaderComponent from "./components/HeaderComponent";
 
 
 Vue.component('form-component', require('./components/Form.vue').default);
-Vue.component("header-component", 'HeaderComponent'.default);
+Vue.component("header-component", HeaderComponent);
+Vue.component("contents-component", ContentsComponent);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35,3 +38,4 @@ Vue.component("header-component", 'HeaderComponent'.default);
 const app = new Vue({
     el: "#app",
 });
+

@@ -13,6 +13,7 @@
     <div id="app">
         <header-component></header-component>
         <form-component></form-component>
+        <contents-component></contents-component>
     </div>
     <script src="{{ mix('js/app.js') }}" defer></script>
 </body>
