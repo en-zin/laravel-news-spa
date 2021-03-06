@@ -1,8 +1,9 @@
 <template>
     <div class="container">
-        <ul>
-          <p v-for="article in articles">{{article.title}}</p>
-        </ul>
+      <div class="container" v-for="article in articles" ::key="article.articleId">
+            <p>{{article.title}}</p>
+            <p>{{article.content}}</p>
+      </div>
     </div>
 </template>
 
@@ -12,17 +13,24 @@
 <script>
 
 export default {
-
-  data: function() {
+  data() {
     return {
-        articles : {},
-        title : "",
+      articles: {},
+      title: "",
+      content: "",
+      details : {},
     }
   },
 
-  mounted: function() {
-    axios.get('/article').then(response => this.articles = response.data)
+  created() {
+    axios.get(this.$route.fullPath)
+    .then(response => this.articles = response.data)
+    .catch(error=> {console.log('false')});
   },
+
+mounted() {
+  console.log(this.$route.fullPath)
+},
 };
 
 </script>

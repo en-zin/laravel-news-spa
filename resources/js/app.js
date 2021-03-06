@@ -1,3 +1,5 @@
+import Vue from "vue";
+import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 import ContentsComponent from "./components/ContentsComponent";
 
@@ -11,6 +13,21 @@ import ContentsComponent from "./components/ContentsComponent";
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+Vue.use(VueRouter);
+const router = new VueRouter({
+    mode: "history",
+    routes: [
+        // TOPページ
+        { path: "/", component: require("./components/Form.vue").default },
+        // 記事投稿フォームページ
+        {
+            path: "/post/details/:id",
+            component: ContentsComponent
+        }
+    ]
+});
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,6 +53,6 @@ Vue.component("contents-component", ContentsComponent);
  */
 
 const app = new Vue({
-    el: "#app",
+    router,
+    el: "#app"
 });
-
