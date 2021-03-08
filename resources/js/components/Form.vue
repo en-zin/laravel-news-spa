@@ -1,7 +1,7 @@
 <template>
     <div class="container" >
         <div class="container">
-            <p class="col-sm-12 col-md-12 mb-4">さぁ、最新のニュースをシェアしましょう</p>
+            <p class="col-sm-12 col-md-12 mb-4" >さぁ、最新のニュースをシェアしましょう</p>
         </div>
         <div class="container">
             <form action="" v-on:submit.prevent="submit">
@@ -23,22 +23,23 @@
             </form>
         </div>
 
-        <div class="container" v-for="article in articles" ::key="article.articleId">
-            <!-- v-for: foreachみたいなもんやり方は公式参照 -->
-            <!-- ::kye: forで回すときに固有のidをつけてあげる. つけてあげないとvue? js?が迷子になる -->
-            <p>{{article.title}}</p>
-            <p>{{article.content}}</p>
-            <router-link :to="`/post/details/${article.articleId}`">きじはこれだよ</router-link>
-            <!-- router-link :to="``": vue.jsのspaでつかうaタグ ダブルクォーテーションとバッククォーテーションで囲う -->
+        <div class="container" v-for="article in articles" :key="article.articleId">
+        <!-- v-for: foreachみたいなもんやり方は公式参照 -->
+        <!-- ::kye: forで回すときに固有のidをつけてあげる. つけてあげないとvue? js?が迷子になる -->
+        <Article :article="article"></Article>
         </div>
     </div>
 </template>
 
 <script>
 
-
+import Article from './Article.vue';
 
     export default {
+
+        components: {
+            Article
+        },
 
         data() {
             return {
@@ -50,29 +51,43 @@
         },
 
         created() {
-            axios.get('/article').then(response => this.articles = response.data)
-            .catch(error=> {console.log('false')});
+            axios.get('/article')
+            .then((response) => {
+                this.articles = response.data
+                })
+            .catch((error) => {
+                console.log('false')
+            });
         },
 
         methods: {
 
             submit() {
+
                 axios.post('/article',{
                     title: this.title,
                     content: this.content
                 })
-                .then(
-                    axios.get('/article').then(response => this.articles = response.data)
-                )
-                .catch(error => {
-                    console.log('false')
-                });
 
-                this.title = "",
-                this.content = ""
+                .then(
+                    axios.get('/article')
+                    .then((response) =>{
+                        this.articles = response.data
+                    })
+                    .catch((error)=> {
+                        console.log('false')
+                    }),
+
+                    this.title = "",
+                    this.content = ""
+                )
+
+                .catch((error)=> {
+                        console.log('false')
+                    }
+                )
             }
         }
-
     }
 
 </script>

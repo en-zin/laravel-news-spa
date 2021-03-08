@@ -15,7 +15,8 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         //
-        return Article::all();
+        return Article::orderBy('articleId', 'desc')->get();
+
     }
 
     /**
@@ -48,9 +49,18 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
         //
+        // $fetch_type = $request->input('type');
+        // $ref_id     = $request->input('ref_id');
+        // $posts = new Post;
+        // return $posts->fetchPosts($fetch_type, $ref_id);
+        // $comments = $post->comments()->orderBy('created_at', 'desc')->get();
+        // return [
+        //     'post'     => $post,
+        //     'comments' => $comments,
+        // ];
     }
 
     /**

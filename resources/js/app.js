@@ -45,6 +45,7 @@ const router = new VueRouter({
 Vue.component('form-component', require('./components/Form.vue').default);
 Vue.component("header-component", HeaderComponent);
 Vue.component("contents-component", ContentsComponent);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

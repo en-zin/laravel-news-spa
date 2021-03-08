@@ -8,8 +8,6 @@
 </template>
 
 
-
-
 <script>
 
 export default {
@@ -18,7 +16,7 @@ export default {
       articles: {},
       title: "",
       content: "",
-      details : {},
+      details : {}
     }
   },
 
