@@ -15,7 +15,7 @@ class DetailsController extends Controller
     public function index(Request $request, $id)
     {
         //
-        $article = Article::where('articleId',$id)->get();
+        $article = Article::where('id',$id)->get();
 
         return $article;
     }

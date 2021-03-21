@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Comment extends Model
 {
     //
     protected $fillable =  [
-        "title", "content", "file_name"
+        "comment", "content_id"
     ];
 }

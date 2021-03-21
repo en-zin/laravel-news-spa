@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
+use App\Models\Comment;
 
-class ArticleController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request,$id)
     {
         //
-        return Article::orderBy('id', 'desc')->get();
-
+        $comment = Comment::where("id",$id)->get();
+        return $comment;
     }
 
     /**
@@ -24,28 +24,17 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
-        if (request()->file) {
-            $file_name = time() . '.' . request()->file->getClientOriginalName();
-            request()->file->storeAs('public', $file_name);
-            Article::create([
-                "title" => request("title"),
-                "content" => request("content"),
-                "file_name" => 'storage/' . $file_name
-            ]);
-        } else {
-            Article::create([
-                "title" => request("title"),
-                "content" => request("content"),
-            ]);
-        };
+        Comment::create([
+            "comment" => request("comment"),
+            "content_id" => request("content_id"),
+        ]);
 
-        $article = Article::get();
+        $comment = Comment::all();
 
-        return $article;
-
+        return $comment;
     }
 
     /**
@@ -65,18 +54,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
         //
-        // $fetch_type = $request->input('type');
-        // $ref_id     = $request->input('ref_id');
-        // $posts = new Post;
-        // return $posts->fetchPosts($fetch_type, $ref_id);
-        // $comments = $post->comments()->orderBy('created_at', 'desc')->get();
-        // return [
-        //     'post'     => $post,
-        //     'comments' => $comments,
-        // ];
     }
 
     /**

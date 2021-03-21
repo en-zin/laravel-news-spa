@@ -1,34 +1,13 @@
 <template>
-    <div>
-        <div class="spinner-border text-primary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-secondary" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-success" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-danger" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-warning" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-info" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-light" role="status">
-        <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-border text-dark" role="status">
-        <span class="sr-only">Loading...</span>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+
 }
 </script>

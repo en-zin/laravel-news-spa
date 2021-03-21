@@ -19,3 +19,6 @@ Route::get("/article","ArticleController@index");
 Route::post("/article","ArticleController@create");
 Route::get("/post/details/{id}","DetailsController@index");
 Route::post("/details", "DetailsController@create");
+
+Route::get("/comment/{id?}","CommentController@index");
+Route::post("/comment","CommentController@create");
