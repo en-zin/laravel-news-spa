@@ -1,23 +1,20 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Example Component</div>
-
-                    <div class="card-body">
-                        I'm an example component.
-                    </div>
-                </div>
-            </div>
-        </div>
+        <LoadingComponent></LoadingComponent>
     </div>
 </template>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+// import LoadingComponent  from './Loading.vue';
+// import HeaderComponent  from './HeaderComponent.vue';
+// import ContentComponent  from './ContentsComponent.vue';
+// import FormComponent  from './Form.vue';
+// export default {
+//     components: {
+//         LoadingComponent,
+//         ContentComponent,
+//         FormComponent,
+//         HeaderComponent
+//     }
+// }
 </script>
