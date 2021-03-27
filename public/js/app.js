@@ -2012,6 +2012,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      id: "",
       comments: [],
       comment: ""
     };
@@ -2024,7 +2025,9 @@ __webpack_require__.r(__webpack_exports__);
         id: this.$route.params.id
       }
     }).then(function (response) {
-      _this.commnets = response.data; // this.loading = false;
+      _this.comments = response.data; // this.loading = false;
+    })["catch"](function (error) {
+      console.log('false');
     });
   },
   methods: {
@@ -38011,9 +38014,9 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "d-flex" },
+      { staticClass: "col-sm-12 col-md-4 col-lg-3 mb-4" },
       _vm._l(_vm.comments, function(comment) {
-        return _c("div", { key: comment.id, staticClass: "card d-flex" }, [
+        return _c("div", { key: comment.id, staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
             _c("p", [_vm._v(_vm._s(comment.comment))])
           ])
@@ -54364,8 +54367,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\use\Desktop\laravel-news-spa\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\use\Desktop\laravel-news-spa\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Applications/MAMP/htdocs/laravel-news-spa/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Applications/MAMP/htdocs/laravel-news-spa/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

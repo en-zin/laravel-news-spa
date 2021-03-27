@@ -12,10 +12,11 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request,$id)
+    public function index(Request $request)
     {
         //
-        $comment = Comment::where("id",$id)->get();
+        $id = $request->input("id");
+        $comment = Comment::where('id',$id)->get();
         return $comment;
     }
 

@@ -10,11 +10,11 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex">
-            <div class="card d-flex" v-for="comment in comments" :key="comment.id">
+        <div class="col-sm-12 col-md-4 col-lg-3 mb-4">
+           <div class="card" v-for="comment in comments" :key="comment.id">
                 <div class="card-body">
                     <p>{{comment.comment}}</p>
-               </div>
+                </div>
             </div>
         </div>
     </div>
@@ -26,6 +26,7 @@ export default {
 
     data() {
         return {
+            id:"",
             comments: [],
             comment: "",
         }
@@ -33,13 +34,16 @@ export default {
 
     created() {
         axios.get("/comment",{
-            params: {
+            params:{
                 id: this.$route.params.id
             }
         })
         .then(response => {
-            this.commnets = response.data;
+            this.comments= response.data;
             // this.loading = false;
+        })
+        .catch(error => {
+            console.log('false')
         })
     },
 
