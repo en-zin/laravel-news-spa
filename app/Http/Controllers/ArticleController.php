@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Storage;
 
 class ArticleController extends Controller
 {
@@ -28,12 +29,12 @@ class ArticleController extends Controller
     {
         //
         if (request()->file) {
-            $file_name = time() . '.' . request()->file->getClientOriginalName();
-            request()->file->storeAs('public', $file_name);
+            $file = $request->file('file');
+            $file_name = Storage::disk('s3')->put('/', $file, 'public');
             Article::create([
                 "title" => request("title"),
                 "content" => request("content"),
-                "file_name" => 'storage/' . $file_name
+                "file_name" => $file_name
             ]);
         } else {
             Article::create([
