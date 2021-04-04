@@ -34,7 +34,7 @@ class ArticleController extends Controller
             Article::create([
                 "title" => request("title"),
                 "content" => request("content"),
-                "file_name" => $file_name,
+                "file_name" => Storage::disk('s3')->url($file_name),
             ]);
         } else {
             Article::create([
