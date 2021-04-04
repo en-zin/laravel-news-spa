@@ -30,11 +30,11 @@ class ArticleController extends Controller
         //
         if (request()->file) {
             $file = $request->file('file');
-            $file_name = Storage::disk('s3')->put('spa', $file, 'public');
+            $file_name = Storage::disk('s3')->putFile('/spa', $file, 'public');
             Article::create([
                 "title" => request("title"),
                 "content" => request("content"),
-                "file_name" => Storage::disk('s3')->url($file_name),
+                "file_name" => $file_name,
             ]);
         } else {
             Article::create([
